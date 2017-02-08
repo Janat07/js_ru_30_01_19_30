@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react'
 import Article from './Article'
-import OneOpen from '../decorators/accordion'
+import Accordion from '../decorators/accordion'
 
  class ArticleList extends Component {
     static  propTypes = {
@@ -34,4 +34,4 @@ import OneOpen from '../decorators/accordion'
 ArticleList.defaultProps = {
     articles: []
 }
-export default OneOpen(ArticleList)
+export default Accordion(ArticleList)
