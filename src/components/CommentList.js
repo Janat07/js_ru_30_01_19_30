@@ -1,10 +1,19 @@
-import React, { Component } from 'react'
+import React, {Component, PropTypes} from 'react'
 import Comment from './Comment'
 
 class CommentList extends Component {
+
+    static PropTypes = {
+        actionText: PropTypes.string.isRequired,
+        comments: PropTypes.shape({
+            text: PropTypes.string.isRequired,
+            user: PropTypes.string,
+        })
+    }
     static defaultProps = {
         comments: []
     }
+
     componentDidMount() {
         console.log('---', 'mounted')
     }
@@ -38,7 +47,7 @@ class CommentList extends Component {
         const {comments} = this.props
         if (!comments.length) return <h3>No comments yet</h3>
 
-        const commentItems = comments.map(comment => <li key={comment.id}><Comment comment={comment} /></li>)
+        const commentItems = comments.map(comment => <li key={comment.id}><Comment comment={comment}/></li>)
         return <ul>{commentItems}</ul>
     }
 
