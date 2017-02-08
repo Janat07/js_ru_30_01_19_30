@@ -9,6 +9,7 @@ import Accordion from '../decorators/accordion'
         isItemOpen: PropTypes.func.isRequired
     }
 
+     //state уже лишний
      state = {
          openItemId: null
      }
