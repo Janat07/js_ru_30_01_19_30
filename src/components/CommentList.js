@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import Comment from './Comment'
+import CommentForm from './CommentForm'
 
 class CommentList extends Component {
     static propTypes = {
@@ -39,10 +40,14 @@ class CommentList extends Component {
         if (!this.state.isOpen) return null
 
         const {comments} = this.props
-        if (!comments.length) return <h3>No comments yet</h3>
+        if (!comments.length) return (<div><h3>No comments yet</h3><CommentForm/></div>)
 
         const commentItems = comments.map(comment => <li key={comment.id}><Comment comment={comment} /></li>)
-        return <ul>{commentItems}</ul>
+        return(
+        <div>
+            <CommentForm/>
+        <ul>{commentItems}</ul>
+        </div>)
     }
 
     toggleOpen = ev => {
