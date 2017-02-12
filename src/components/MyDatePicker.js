@@ -33,7 +33,7 @@ class MyDatePicker extends Component {
                 { from && !to && <p>Please select the <strong>last day</strong>.</p> }
                 { from && to &&
                 <p>
-                    Selected range: { (from).toLocaleDateString() } to { (to).toLocaleDateString() }.
+                    Selected range: { (from).toDateString() } to { (to).toDateString() }.
                     { ' ' }<a href="." onClick={ this.handleResetClick }>Reset</a>
                 </p>
                 }
