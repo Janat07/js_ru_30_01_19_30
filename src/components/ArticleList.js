@@ -1,6 +1,9 @@
 import React, {Component, PropTypes} from 'react'
 import Article from './Article/index'
 import accordion from '../decorators/accordion'
+import SelectFilters from './SelectFilters'
+import {connect} from 'react-redux'
+import {changeFilters} from '../AC/filters'
 
 class ArticleList extends Component {
     render() {
@@ -12,10 +15,13 @@ class ArticleList extends Component {
                 toggleOpen={toggleOpenItem(article.id)}/>
         </li>)
         return (
-            <ul>
-                {articleElements}
-            </ul>
-        )
+            <div>
+                <SelectFilters/>
+                <ul>
+                    {articleElements}
+                </ul>
+            </div>
+    )
     }
 }
 export default accordion(ArticleList)
@@ -30,3 +36,9 @@ ArticleList.propTypes = {
 ArticleList.defaultProps = {
     articles: []
 }
+/*export  default connect(state => {
+
+
+    return {...state}
+
+}, {changeFilters})(ArticleList)*/

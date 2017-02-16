@@ -15,16 +15,17 @@ class App extends Component {
 
     render() {
         const {articles} = this.props
-        const options = articles.map(article => ({
+       /* const options = articles.map(article => ({
             label: article.title,
+            date: article.date,
             value: article.id
-        }))
+        }))*/
         return (
             <div>
                 <Counter/>
                 User: <input type="text" value={this.state.user} onChange={this.handleUserChange}/>
-                <Select options = {options} onChange={this.handleSelectChange} value={this.state.selection} multi/>
-                <DateRange />
+                {/*  <Select options = {options} onChange={this.handleSelectChange} value={this.state.selection} multi/>
+                <DateRange />*/}
                 <ArticleList articles={articles}/>
                 <Chart articles={articles}/>
             </div>

@@ -11,6 +11,7 @@ class Article extends Component {
         article: PropTypes.shape({
             title: PropTypes.string.isRequired,
             text: PropTypes.string.isRequired,
+            date: PropTypes.dateTime,
             comments: PropTypes.array
         }).isRequired,
         isOpen: PropTypes.bool,
@@ -31,6 +32,7 @@ class Article extends Component {
                     {article.title}
                     <a href="#" onClick = {this.handleDelete}>Delete me</a>
                 </h3>
+                <h4>{article.date}</h4>
                 <CSSTransition
                     transitionName="article-body"
                     transitionEnterTimeout={500}
