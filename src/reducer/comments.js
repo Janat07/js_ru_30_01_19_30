@@ -7,9 +7,11 @@ const defaultState = arrayToMap(defaultComments)
 export default (state = defaultState, action) => {
     const {type, payload} = action
 
-    switch (type) {
-
-    }
-
+  /*  switch ('type') {
+      case ADD_COMMENT  :
+       return {
+      ...state
+        }
+    }*/
     return state
 }

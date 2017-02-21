@@ -1,4 +1,4 @@
-import {DELETE_ARTICLE, LOAD_ALL_ARTICLES, FAIL, SUCCESS, START} from '../constants'
+import {DELETE_ARTICLE, LOAD_ALL_ARTICLES, FAIL, SUCCESS, START, ADD_COMMENT} from '../constants'
 import {arrayToMap} from '../utils'
 
 const defaultState = {
@@ -8,7 +8,7 @@ const defaultState = {
 
 
 export default (state = defaultState, action) => {
-    const {type, payload} = action
+    const {type, payload,randomId} = action
 
     switch (type) {
         case DELETE_ARTICLE:
@@ -24,6 +24,8 @@ export default (state = defaultState, action) => {
                 entities: arrayToMap(action.response),
                 isLoading: false
             }
+        case ADD_COMMENT:
+            return {...state}
     }
 
     return state

@@ -1,6 +1,9 @@
-import React, { Component, PropTypes } from 'react'
+import React, {Component, PropTypes} from 'react'
 import Comment from './Comment'
 import NewCommentForm from './NewCommentForm'
+import {connect} from 'react-redux'
+import { addComment } from '../AC/index'
+
 
 class CommentList extends Component {
     static propTypes = {
@@ -9,12 +12,13 @@ class CommentList extends Component {
     static defaultProps = {
         comments: []
     }
+
     componentDidMount() {
         console.log('---', 'mounted')
     }
 
     componentWillReceiveProps(nextProps) {
-       // console.log('---', this.props, nextProps)
+        // console.log('---', this.props, nextProps)
     }
 
 
@@ -39,13 +43,14 @@ class CommentList extends Component {
     getBody() {
         if (!this.state.isOpen) return null
 
-        const {comments} = this.props
+        const {comments, article, addComment} = this.props
         if (!comments.length) return (<div>
             <h3>No comments yet</h3>
-            <NewCommentForm />
+            <NewCommentForm articleId={article.id} addComment={addComment}/>
         </div>)
 
-        const commentItems = comments.map(id => <li key={id}><Comment id={id} /></li>)
+        //  const commentItems = comments.map(id => <li key={id}><Comment id={id}/></li>)
+        const commentItems = comments.map(comment => <li key={comment.id}><Comment comment={comment}/></li>)
         return <div>
             <ul>{commentItems}</ul>
             <NewCommentForm />
@@ -60,4 +65,12 @@ class CommentList extends Component {
     }
 }
 
-export default CommentList
+//export default CommentList
+export default connect((state, { article }) => {
+    return {
+        state,
+        article
+    }
+}, {
+    addComment
+})(CommentList)

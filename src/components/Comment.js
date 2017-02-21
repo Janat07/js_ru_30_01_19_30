@@ -19,8 +19,8 @@ Comment.propTypes = {
     }).isRequired
 }
 
-export default connect((state, props) => {
+/*export default connect((state, props) => {
     const {id} = props
     const comment = state.comments[id]
     return { comment }
-})(Comment)
+})(Comment)*/

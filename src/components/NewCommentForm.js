@@ -1,7 +1,10 @@
-import React, { Component, PropTypes } from 'react'
+import React, {Component, PropTypes} from 'react'
+
 
 class NewCommentForm extends Component {
     static propTypes = {
+        addComment: PropTypes.function,
+        articleId: PropTypes.string
     }
 
     state = {
@@ -16,7 +19,9 @@ class NewCommentForm extends Component {
     }
 
     handleSubmit = ev => {
+        const {addComment, articleId} = this.props
         ev.preventDefault()
+        addComment(this.state, articleId)
         this.setState({
             user: '',
             text: ''
@@ -24,11 +29,12 @@ class NewCommentForm extends Component {
     }
 
     render() {
+        const {user, text}=this.state
         return (
-            <form onSubmit = {this.handleSubmit}>
-                comment: <input type="text" value={this.state.text} onChange = {this.handleChange('text')}/>
-                user: <input type="text" value={this.state.user} onChange = {this.handleChange('user')}/>
-                <input type = "submit"/>
+            <form onSubmit={this.handleSubmit}>
+                comment: <input type="text" value={this.state.text} onChange={this.handleChange('text')}/>
+                user: <input type="text" value={this.state.user} onChange={this.handleChange('user')}/>
+                <input type="submit"/>
             </form>
         )
     }
