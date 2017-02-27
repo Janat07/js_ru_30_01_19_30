@@ -9,3 +9,8 @@ export function arrayToMap(arr, Model) {
 export function mapToArr(map) {
     return map.valueSeq().toArray()
 }
+
+export function getRelation(entity, relation, storeState) {
+    if (!entity[relation] || !storeState[relation]) return []
+        return entity[relation].map(id => storeState[relation].getIn(['entities', id]))
+}
